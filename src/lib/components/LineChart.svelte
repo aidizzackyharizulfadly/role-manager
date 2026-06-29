@@ -18,7 +18,7 @@
   const max = $derived(Math.max(...values, 1));
   const min = $derived(Math.min(...values, 0));
   const w = 600;
-  const padding = { top: 20, right: 24, bottom: 36, left: 64 };
+  const padding = { top: 24, right: 28, bottom: 56, left: 68 };
 
   function x(i: number): number {
     return padding.left + (i * (w - padding.left - padding.right)) / Math.max(values.length - 1, 1);
@@ -124,22 +124,23 @@
         x1={x(i)}
         x2={x(i)}
         y1={height - padding.bottom}
-        y2={height - padding.bottom + 5}
+        y2={height - padding.bottom + 6}
         stroke={axisColor}
         stroke-width="1.2"
         vector-effect="non-scaling-stroke"
       />
     {/each}
 
-    <!-- Label hari di sumbu X (presisi mengikuti titik data, medium-weight) -->
+    <!-- Label hari di sumbu X (presisi mengikuti titik data, tegas) -->
     {#each labels as l, i (i)}
       <text
         x={labelPositions[i]}
-        y={height - padding.bottom + 18}
+        y={height - padding.bottom + 26}
         text-anchor="middle"
-        font-size="10"
-        font-weight="600"
-        fill={i === peakIdx ? '#1E3A5F' : '#6b7280'}
+        font-size="13"
+        font-weight="700"
+        letter-spacing="0.3"
+        fill={i === peakIdx ? '#1E3A5F' : '#374151'}
         font-family="Inter, sans-serif"
       >{l}</text>
     {/each}
