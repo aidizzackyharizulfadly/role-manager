@@ -10,7 +10,7 @@
   let {
     values,
     labels = [],
-    height = 240,
+    height = 360,
     color = '#1E3A5F',
     axisColor = '#6b7280'
   }: Props = $props();
