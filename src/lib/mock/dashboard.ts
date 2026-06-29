@@ -20,14 +20,14 @@ export const operationalStatus = (outlet: string): string => {
 };
 
 export const ringkasanPenjualan = [
-  { label: 'Gross Sales', value: 'Rp 142.531.800', trend: '+12,4%', accent: 'up' as const },
-  { label: 'Net Sales', value: 'Rp 124.987.500', trend: '+8,7%', accent: 'up' as const },
-  { label: 'Gross Profit', value: 'Rp 38.215.400', trend: '+15,2%', accent: 'up' as const },
-  { label: 'Gross Margin', value: '26,8%', trend: '+0,4 pt', accent: 'up' as const },
-  { label: 'Total Bill', value: '2.847', trend: '+5,1%', accent: 'up' as const },
-  { label: 'Avg Sales/Bill', value: 'Rp 50.062', trend: '-1,2%', accent: 'down' as const },
-  { label: 'Total Pax', value: '7.523', trend: '+6,8%', accent: 'up' as const },
-  { label: 'Avg Sales/Pax', value: 'Rp 18.949', trend: '+0,9%', accent: 'up' as const }
+  { label: 'Penjualan Kotor', value: 'Rp 142.531.800', trend: '+12,4%', accent: 'up' as const },
+  { label: 'Penjualan Bersih', value: 'Rp 124.987.500', trend: '+8,7%', accent: 'up' as const },
+  { label: 'Laba Kotor', value: 'Rp 38.215.400', trend: '+15,2%', accent: 'up' as const },
+  { label: 'Margin Kotor', value: '26,8%', trend: '+0,4 pt', accent: 'up' as const },
+  { label: 'Total Struk', value: '2.847', trend: '+5,1%', accent: 'up' as const },
+  { label: 'Rata-rata per Struk', value: 'Rp 50.062', trend: '-1,2%', accent: 'down' as const },
+  { label: 'Total Pengunjung', value: '7.523', trend: '+6,8%', accent: 'up' as const },
+  { label: 'Rata-rata per Pengunjung', value: 'Rp 18.949', trend: '+0,9%', accent: 'up' as const }
 ];
 
 export const peakInfo = {

@@ -32,9 +32,9 @@
       <tr>
         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500">Periode ⇅</th>
         <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Invoice</th>
-        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Gross Sales</th>
-        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Net Sales</th>
-        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Profit</th>
+        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Penjualan Kotor</th>
+        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Penjualan Bersih</th>
+        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Laba</th>
         <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Margin</th>
       </tr>
     </thead>
