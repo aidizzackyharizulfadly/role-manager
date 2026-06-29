@@ -19,28 +19,43 @@
   let { title, total, segments, moreLabel = 'Selengkapnya' }: Props = $props();
 </script>
 
-<div class="bg-white rounded-lg border border-gray-200 p-4 flex flex-col">
-  <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{title}</div>
+<!--
+  Luna POS style: card border tipis, title bold atas-kiri, TOTAL number
+  besar medium-grey di atas donut. Donut ungu tebal di kiri, legend
+  list di kanan dengan value bold + label + percent. Selengkapnya button
+  bottom-right bg ungu #53387d.
+-->
+<div class="bg-white border border-gray-200 rounded p-5 flex flex-col">
+  <div class="text-sm font-bold text-gray-800 mb-3">{title}</div>
 
-  <div class="flex items-start gap-4">
-    <div class="shrink-0 relative">
-      <DonutChart {segments} size={130} thickness={22} />
-      <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-        <div class="text-sm font-bold text-gray-800 tabular-nums text-center px-2 leading-tight">{total}</div>
-      </div>
+  <div class="flex items-baseline gap-1 mb-1">
+    <div class="text-lg font-bold text-gray-500 tabular-nums">{total}</div>
+    <div class="text-[10px] uppercase tracking-wider text-gray-400">Total</div>
+  </div>
+
+  <div class="flex items-start gap-6 mt-2">
+    <div class="shrink-0">
+      <DonutChart {segments} size={140} thickness={18} />
     </div>
-    <div class="flex-1 min-w-0 space-y-1.5">
+    <div class="flex-1 min-w-0 space-y-2.5 mt-1">
       {#each segments as s, i (i)}
-        <div class="flex items-center gap-2 text-xs">
-          <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background: {s.color};"></span>
-          <span class="text-gray-700 truncate flex-1">{s.label}</span>
-          {#if s.pct}
-            <span class="text-gray-400 tabular-nums shrink-0">{s.pct}</span>
-          {/if}
+        <div class="flex items-start gap-2 text-xs">
+          <span class="w-1 h-full min-h-[28px] rounded-sm shrink-0" style="background: {s.color};"></span>
+          <div class="flex-1 min-w-0">
+            <div class="font-bold text-gray-800 tabular-nums leading-tight">{s.raw ?? s.value.toLocaleString('id-ID')}</div>
+            <div class="text-gray-600 truncate mt-0.5">{s.label}</div>
+            {#if s.pct}
+              <div class="text-[10px] text-gray-400 mt-0.5">{s.pct}</div>
+            {/if}
+          </div>
         </div>
       {/each}
     </div>
   </div>
 
-  <button class="mt-3 self-end text-xs text-[#1E3A5F] hover:underline">{moreLabel} →</button>
+  <div class="flex justify-end mt-4">
+    <button class="bg-[#53387d] hover:bg-[#3f2a5f] text-white text-xs px-3 py-1.5 rounded transition-colors">
+      {moreLabel}
+    </button>
+  </div>
 </div>

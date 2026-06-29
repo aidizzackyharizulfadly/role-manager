@@ -2,21 +2,17 @@
   type Props = {
     label: string;
     value: string;
-    accent?: 'blue' | 'violet' | 'emerald' | 'amber';
+    sublabel?: string;
   };
 
-  let { label, value, accent = 'blue' }: Props = $props();
-
-  const accentMap: Record<string, string> = {
-    blue: 'border-l-[#1E3A5F]',
-    violet: 'border-l-violet-500',
-    emerald: 'border-l-emerald-500',
-    amber: 'border-l-amber-500'
-  };
-  const cls = $derived(accentMap[accent] ?? accentMap.blue);
+  let { label, value, sublabel }: Props = $props();
 </script>
 
-<div class="bg-white rounded-lg border border-gray-200 border-l-4 {cls} p-4">
-  <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">{label}</div>
-  <div class="text-base font-extrabold text-gray-900 tabular-nums">{value}</div>
+<!-- Luna POS style: bg abu muda #f3f4f6, value bold medium di atas, label uppercase tracking abu di bawah -->
+<div class="bg-[#f3f4f6] rounded px-4 py-3 text-center">
+  <div class="text-base font-bold text-gray-800 tabular-nums leading-tight">{value}</div>
+  <div class="text-[10px] uppercase tracking-wider text-gray-500 mt-1.5">{label}</div>
+  {#if sublabel}
+    <div class="text-[10px] text-gray-400 mt-0.5">{sublabel}</div>
+  {/if}
 </div>

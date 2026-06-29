@@ -4,75 +4,74 @@
   import InsightCard from '$lib/components/InsightCard.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
   import {
-    greetingHour, operationalStatus, ringkasanPenjualan, peakInfo, penjualanTrend,
+    ringkasanPenjualan, peakInfo, penjualanTrend,
     topOutlet, topPelanggan, topProdukByJumlah, topProdukByQty,
     topKategoriByJumlah, topKategoriByQty, stokRendah
   } from '$lib/mock/dashboard';
 
-  const greeting = greetingHour();
-  const statusLine = operationalStatus('HEKAS Pandeansari');
-
-  // Quick stats for sidebar footer
-  const totalOutlets = 4;
-  const activeKasir = 12;
+  const userName = 'ENDANG';
+  const greeting = 'Selamat datang';
 </script>
 
-<svelte:head><title>Dashboard — HEKAS POS Manager</title></svelte:head>
+<svelte:head><title>Dasbor — HEKAS POS Manager</title></svelte:head>
 
-<!-- Greeting -->
-<div class="flex items-center gap-3 mb-6">
-  <div class="w-11 h-11 rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#3B82F6] text-white flex items-center justify-center text-sm font-bold shrink-0">SW</div>
-  <div>
-    <p class="text-sm text-gray-500">{greeting}, Bu Siti —</p>
-    <h1 class="text-xl font-bold text-gray-800 leading-tight">{statusLine}</h1>
-    <p class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-2">
-      <span class="flex items-center gap-0.5">
-        <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none">
-          <path d="M2 6h12l-1 8H3L2 6zM5 6V4a3 3 0 116 0v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        HEKAS Pandeansari
-      </span>
-      ·
-      <span>login 08:02 WIB</span>
-    </p>
+<!-- Page title row: title + period selector -->
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl font-bold text-gray-800">Dasbor</h1>
+  <div class="flex items-center gap-2 text-xs text-gray-600">
+    <i class="material-icons text-base text-gray-400">settings</i>
+    <span class="border border-gray-200 rounded px-3 py-1.5 bg-white">26/06/2026 - 26/06/2026</span>
   </div>
 </div>
 
-<!-- Ringkasan Penjualan -->
-<div class="bg-white rounded-lg border border-gray-200 p-5 mb-4">
-  <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Ringkasan Penjualan · 22 – 28 Juni 2026</div>
+<!-- Promo banner (Luna POS style purple gradient) -->
+<div class="rounded overflow-hidden mb-4 bg-gradient-to-r from-[#3a1f5e] via-[#53387d] to-[#7a4fb8] text-white p-5 flex items-center gap-4">
+  <div class="flex-1">
+    <div class="text-base font-bold leading-tight">Inovasi terbaru dari Luna Capital.</div>
+    <div class="text-xs opacity-90 mt-1">Tingkatkan transaksi bisnis, dapatkan Modal Xpress dari Luna Capital</div>
+    <button class="mt-2.5 bg-yellow-400 hover:bg-yellow-500 text-gray-900 text-xs font-semibold px-4 py-1.5 rounded transition-colors">
+      Dapatkan informasi lebih lanjut disini
+    </button>
+  </div>
+  <div class="text-2xl font-extrabold tracking-tight hidden sm:block">
+    LUNA<span class="text-xs align-top ml-1 opacity-80">Capital</span>
+  </div>
+</div>
+
+<!-- Greeting -->
+<div class="text-base font-bold text-gray-800 mb-3">{greeting} <span class="text-[#53387d]">{userName}</span></div>
+
+<!-- Ringkasan Penjualan card -->
+<div class="bg-white border border-gray-200 rounded p-5 mb-4">
+  <div class="text-sm font-bold text-gray-800 mb-3">Ringkasan Penjualan</div>
   <MetricSummaryCard metrics={ringkasanPenjualan} />
 </div>
 
-<!-- Penjualan Line Chart -->
-<div class="bg-white rounded-lg border border-gray-200 p-5 mb-4">
-  <div class="flex items-center justify-between mb-4">
+<!-- Penjualan line chart card -->
+<div class="bg-white border border-gray-200 rounded p-5 mb-4">
+  <div class="flex items-start justify-between mb-4">
     <div>
-      <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Penjualan · 7 hari terakhir</div>
+      <div class="text-sm font-bold text-gray-800 mb-3">Penjualan</div>
       <div class="grid grid-cols-4 gap-6 text-xs">
         <div>
-          <div class="text-gray-500">Peak Date</div>
-          <div class="font-bold text-gray-800">{peakInfo.peakDate}</div>
-          <div class="text-gray-600 tabular-nums">{peakInfo.peakValue}</div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Peak Date</div>
+          <div class="text-sm font-bold text-gray-800">{peakInfo.peakDate}</div>
         </div>
         <div>
-          <div class="text-gray-500">Top Income</div>
-          <div class="font-bold text-gray-800">{peakInfo.topIncome}</div>
-          <div class="text-gray-600 tabular-nums">{peakInfo.topValue}</div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Top Income</div>
+          <div class="text-sm font-bold text-gray-800 tabular-nums">{peakInfo.topIncome}</div>
         </div>
         <div>
-          <div class="text-gray-500">Low Date</div>
-          <div class="font-bold text-gray-800">{peakInfo.lowDate}</div>
-          <div class="text-gray-600 tabular-nums">{peakInfo.lowValue}</div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Low Date</div>
+          <div class="text-sm font-bold text-gray-800">{peakInfo.lowDate}</div>
         </div>
         <div>
-          <div class="text-gray-500">Lower Income</div>
-          <div class="font-bold text-gray-800">{peakInfo.lowerDate}</div>
-          <div class="text-gray-600 tabular-nums">{peakInfo.lowerValue}</div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Lower Income</div>
+          <div class="text-sm font-bold text-gray-800 tabular-nums">{peakInfo.lowerDate}</div>
         </div>
       </div>
     </div>
-    <select class="text-sm border border-gray-200 rounded px-3 py-1.5 focus:outline-none focus:border-[#1E3A5F]">
+    <select class="text-xs border border-gray-200 rounded px-3 py-1.5 bg-white focus:outline-none focus:border-[#53387d]">
       <option>Tanggal</option>
       <option>Bulan</option>
       <option>Tahun</option>
@@ -81,62 +80,51 @@
   <LineChart values={penjualanTrend.values} labels={penjualanTrend.labels} />
 </div>
 
-<!-- 2-col Insight Cards -->
+<!-- 2-col donut cards -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-  <InsightCard title="Top Outlet" total="Rp 142jt" segments={topOutlet} />
-  <InsightCard title="Top Pelanggan" total="Rp 142jt" segments={topPelanggan} />
+  <InsightCard title="Top Outlet" total="Rp 4.388.100,00" segments={topOutlet} />
+  <InsightCard title="Top Pelanggan" total="Rp 4.388.100,00" segments={topPelanggan} />
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-  <InsightCard title="Top Produk Berdasarkan Jumlah" total="Rp 102jt" segments={topProdukByJumlah} />
-  <InsightCard title="Top Produk Berdasarkan Qty" total="5.376 unit" segments={topProdukByQty} />
+  <InsightCard title="Top Produk Berdasarkan Jumlah" total="Rp 4.388.100,00" segments={topProdukByJumlah} />
+  <InsightCard title="Top Produk Berdasarkan Qty" total="740" segments={topProdukByQty} />
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-  <InsightCard title="Top Kategori by Jumlah" total="Rp 142jt" segments={topKategoriByJumlah} />
-  <InsightCard title="Top Kategori by Qty" total="7.401 unit" segments={topKategoriByQty} />
+  <InsightCard title="Top Kategori Produk Berdasarkan Jumlah" total="Rp 4.388.100,00" segments={topKategoriByJumlah} />
+  <InsightCard title="Top Kategori Produk Berdasarkan Qty" total="740" segments={topKategoriByQty} />
 </div>
 
-<!-- Stok Rendah -->
-<div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
-  <div class="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
-    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Produk dengan Stok Rendah · 5 dari 15.240 item</div>
-    <button class="text-xs text-[#1E3A5F] hover:underline">Lainnya →</button>
+<!-- Stok Rendah table card -->
+<div class="bg-white border border-gray-200 rounded overflow-hidden mb-4">
+  <div class="px-4 py-3 flex items-center justify-between border-b border-gray-200">
+    <div class="text-sm font-bold text-gray-800">Produk dengan Stok Rendah</div>
+    <button class="text-xs text-gray-500 hover:text-[#53387d]">Lainnya</button>
   </div>
-  <table class="w-full text-sm">
-    <thead class="bg-white border-b border-gray-200">
-      <tr>
-        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500">Produk</th>
-        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500">Gudang</th>
-        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Qty Tersedia</th>
-        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500">Minimum Qty</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each stokRendah as row, i (i)}
-        <tr class="border-b border-gray-100 hover:bg-gray-50">
-          <td class="px-4 py-3 text-gray-800">{row.produk}</td>
-          <td class="px-4 py-3 text-gray-700">{row.gudang}</td>
-          <td class="px-4 py-3 text-right tabular-nums text-rose-600 font-semibold">{row.qty}</td>
-          <td class="px-4 py-3 text-right tabular-nums text-gray-700">{row.minimum}</td>
+  <div class="max-h-72 overflow-y-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-[#f3f4f6] sticky top-0">
+        <tr>
+          <th class="px-4 py-2.5 text-left text-xs font-medium text-gray-600">Produk</th>
+          <th class="px-4 py-2.5 text-left text-xs font-medium text-gray-600">Gudang</th>
+          <th class="px-4 py-2.5 text-right text-xs font-medium text-gray-600">Qty Tersedia</th>
+          <th class="px-4 py-2.5 text-right text-xs font-medium text-gray-600">Minimum Qty</th>
         </tr>
-      {/each}
-    </tbody>
-  </table>
-  <Pagination currentPage={1} totalPages={3} totalRecords={stokRendah.length} />
-</div>
-
-<!-- Footer ringkasan -->
-<div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
-  <div class="flex items-center gap-4">
-    <span>© 2026 HEKAS POS · Powered by HEKAS</span>
-    <span class="text-gray-300">·</span>
-    <span>{totalOutlets} outlet aktif</span>
-    <span class="text-gray-300">·</span>
-    <span>{activeKasir} kasir on-duty</span>
+      </thead>
+      <tbody>
+        {#each stokRendah as row, i (i)}
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="px-4 py-2.5 text-gray-800">{row.produk}</td>
+            <td class="px-4 py-2.5 text-gray-700">{row.gudang}</td>
+            <td class="px-4 py-2.5 text-right tabular-nums text-rose-600 font-semibold">{row.qty}</td>
+            <td class="px-4 py-2.5 text-right tabular-nums text-gray-700">{row.minimum}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
   </div>
-  <div class="flex items-center gap-2">
-    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-    <span>Data updated real-time · {new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB</span>
+  <div class="px-4 py-3 flex items-center justify-end border-t border-gray-200">
+    <button class="bg-[#53387d] hover:bg-[#3f2a5f] text-white text-xs px-3 py-1.5 rounded transition-colors">Lainnya</button>
   </div>
 </div>
