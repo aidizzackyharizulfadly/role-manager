@@ -10,7 +10,7 @@
     values,
     labels = [],
     height = 200,
-    color = '#53387d'
+    color = '#1E3A5F'
   }: Props = $props();
 
   const max = $derived(Math.max(...values, 1));

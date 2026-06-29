@@ -31,14 +31,14 @@ export const ringkasanPenjualan = [
 ];
 
 export const peakInfo = {
-  peakDate: 'Sab, 27/06',
-  peakValue: 'Rp 28.450.000',
-  topIncome: 'Ming, 22/06',
-  topValue: 'Rp 31.870.000',
-  lowDate: 'Sel, 24/06',
-  lowValue: 'Rp 14.120.000',
-  lowerDate: 'Rab, 25/06',
-  lowerValue: 'Rp 12.840.000'
+  tanggalPuncak: 'Sab, 27/06',
+  nilaiPuncak: 'Rp 28.450.000',
+  tanggalTertinggi: 'Ming, 22/06',
+  nilaiTertinggi: 'Rp 31.870.000',
+  tanggalTerendah: 'Sel, 24/06',
+  nilaiTerendah: 'Rp 14.120.000',
+  tanggalPalingRendah: 'Rab, 25/06',
+  nilaiPalingRendah: 'Rp 12.840.000'
 };
 
 export const penjualanTrend = {
